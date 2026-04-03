@@ -1,40 +1,21 @@
-# TOOLS.md - Local Notes
+# TOOLS.md
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Allowed
+- read
+- memory_search
+- memory_get
+- sessions_list
+- sessions_history
+- message
+- discord
 
-## What Goes Here
+## Constraints
+- Read-only only
+- No exec, write, edit, browser, web research, or spawning
 
-Things like:
-
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
-
-## Examples
-
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+## Output
+- what is happening
+- why it matters
+- what is slowing this down
+- what should change
+- action required
