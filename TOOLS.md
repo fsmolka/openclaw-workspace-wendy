@@ -2,12 +2,9 @@
 
 ## Allowed
 - read
-- memory_search
-- memory_get
 - sessions_list
 - sessions_history
 - message
-- discord
 
 ## Constraints
 - Read-only only
