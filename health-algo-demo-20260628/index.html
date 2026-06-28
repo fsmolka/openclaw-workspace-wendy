@@ -3,75 +3,106 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Health Algo Dashboard</title>
+  <title>Health Algo</title>
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <main class="shell">
-    <section class="topbar" aria-label="Health dashboard summary">
+  <main class="app-shell">
+    <header class="masthead" aria-label="Health Algo overview">
       <div>
-        <p class="eyebrow">Health Algo</p>
-        <h1>Year-end body change cockpit</h1>
+        <p class="kicker">Health Algo</p>
+        <h1>Body change operating system</h1>
+        <p class="lede">Daily decisions from food, burn, training, recovery, and data quality.</p>
       </div>
-      <div class="top-actions" aria-label="Dashboard controls">
-        <button class="icon-button" id="range7" type="button" title="Show 7 days">7d</button>
-        <button class="icon-button" id="rangeAll" type="button" title="Show all days">All</button>
+      <div class="masthead-controls" aria-label="View controls">
+        <div class="sync-card">
+          <span>Latest sync</span>
+          <strong id="latestSync">Loading</strong>
+        </div>
+        <div class="segmented" role="group" aria-label="Time range">
+          <button id="range7" type="button">7D</button>
+          <button id="range14" type="button">14D</button>
+        </div>
       </div>
+    </header>
+
+    <section class="score-strip" aria-label="Primary health signals">
+      <article class="score-card priority">
+        <span class="score-label">Today</span>
+        <strong id="todayScore">Loading</strong>
+        <p id="todayScoreDetail"></p>
+      </article>
+      <article class="score-card">
+        <span class="score-label">Deficit Pace</span>
+        <strong id="deficitPace">Loading</strong>
+        <p id="deficitPaceDetail"></p>
+      </article>
+      <article class="score-card">
+        <span class="score-label">Protein</span>
+        <strong id="proteinPace">Loading</strong>
+        <p id="proteinPaceDetail"></p>
+      </article>
+      <article class="score-card">
+        <span class="score-label">Recovery Risk</span>
+        <strong id="recoveryRisk">Loading</strong>
+        <p id="recoveryRiskDetail"></p>
+      </article>
     </section>
 
-    <section class="status-band">
-      <div>
-        <p class="label">Today</p>
-        <strong id="todayStatus">Loading</strong>
-        <span id="todayDetail"></span>
-      </div>
-      <div>
-        <p class="label">7-day average</p>
-        <strong id="avgDeficit">Loading</strong>
-        <span id="avgDeficitDetail"></span>
-      </div>
-      <div>
-        <p class="label">Protein</p>
-        <strong id="proteinStatus">Loading</strong>
-        <span id="proteinDetail"></span>
-      </div>
-      <div>
-        <p class="label">Data quality</p>
-        <strong id="qualityStatus">Loading</strong>
-        <span id="qualityDetail"></span>
-      </div>
-    </section>
-
-    <section class="layout">
-      <div class="main-column">
-        <section class="panel">
-          <div class="panel-header">
+    <section class="workspace">
+      <div class="primary-stack">
+        <section class="panel command-panel" aria-label="Today operating plan">
+          <div class="section-heading">
             <div>
-              <p class="label">Energy balance</p>
-              <h2>Calories in vs burn</h2>
+              <p class="kicker">Coach Decision</p>
+              <h2 id="coachHeadline">Loading</h2>
             </div>
-            <span id="energyWindow" class="pill"></span>
+            <span class="status-pill" id="coachMode">Analyzing</span>
           </div>
-          <div class="chart-wrap">
-            <svg id="energyChart" viewBox="0 0 920 300" role="img" aria-label="Energy balance chart"></svg>
+          <div class="command-grid">
+            <div class="readiness">
+              <div class="ring" id="readinessRing" style="--score: 0">
+                <strong id="readinessScore">0</strong>
+                <span>score</span>
+              </div>
+              <p id="readinessDetail"></p>
+            </div>
+            <div class="action-list" id="actionList"></div>
           </div>
         </section>
 
-        <section class="panel">
-          <div class="panel-header">
+        <section class="panel" aria-label="Energy chart">
+          <div class="section-heading">
             <div>
-              <p class="label">Training and movement</p>
-              <h2>Exercise, steps, and active energy</h2>
+              <p class="kicker">Energy Balance</p>
+              <h2>Calories in, total burn, and deficit trend</h2>
+            </div>
+            <div class="legend">
+              <span><i class="dot food"></i>Food</span>
+              <span><i class="dot burn"></i>Burn</span>
+              <span><i class="dot trend"></i>Deficit</span>
             </div>
           </div>
-          <div class="metric-grid" id="movementGrid"></div>
+          <div class="chart-frame">
+            <svg id="energyChart" viewBox="0 0 1040 360" role="img" aria-label="Energy balance chart"></svg>
+          </div>
         </section>
 
-        <section class="panel">
-          <div class="panel-header">
+        <section class="panel" aria-label="Performance lanes">
+          <div class="section-heading">
             <div>
-              <p class="label">Daily ledger</p>
-              <h2>Recent days</h2>
+              <p class="kicker">Operating Lanes</p>
+              <h2>Nutrition, movement, training, and recovery</h2>
+            </div>
+          </div>
+          <div class="lane-grid" id="laneGrid"></div>
+        </section>
+
+        <section class="panel" aria-label="Daily ledger">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Daily Ledger</p>
+              <h2>Clean rollup records</h2>
             </div>
           </div>
           <div class="table-wrap">
@@ -79,13 +110,13 @@
               <thead>
                 <tr>
                   <th>Date</th>
-                  <th>In</th>
+                  <th>Food</th>
                   <th>Burn</th>
                   <th>Deficit</th>
                   <th>Protein</th>
                   <th>Steps</th>
                   <th>Sleep</th>
-                  <th>Flag</th>
+                  <th>Quality</th>
                 </tr>
               </thead>
               <tbody id="dayRows"></tbody>
@@ -94,23 +125,31 @@
         </section>
       </div>
 
-      <aside class="side-column">
-        <section class="panel coach">
-          <p class="label">Coach view</p>
-          <h2 id="coachHeadline">Loading</h2>
-          <ul id="coachList"></ul>
+      <aside class="insight-stack" aria-label="Secondary insights">
+        <section class="panel insight-panel">
+          <p class="kicker">Runway</p>
+          <h2>End-of-year pace</h2>
+          <div class="runway-number" id="runwayPace">Loading</div>
+          <p id="runwayDetail"></p>
+          <div class="mini-bars" id="runwayBars"></div>
         </section>
 
         <section class="panel">
-          <p class="label">Recovery</p>
+          <p class="kicker">Nutrition Quality</p>
+          <h2>Macro consistency</h2>
+          <div id="macroPanel"></div>
+        </section>
+
+        <section class="panel">
+          <p class="kicker">Recovery</p>
           <h2>Sleep and heart signals</h2>
-          <div class="recovery-list" id="recoveryList"></div>
+          <div class="signal-list" id="recoveryPanel"></div>
         </section>
 
         <section class="panel">
-          <p class="label">Pipeline</p>
-          <h2>Current inputs</h2>
-          <div class="source-list" id="sourceList"></div>
+          <p class="kicker">Pipeline</p>
+          <h2>Data integrity</h2>
+          <div class="signal-list" id="pipelinePanel"></div>
           <p class="fineprint" id="generatedAt"></p>
         </section>
       </aside>
