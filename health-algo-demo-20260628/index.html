@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Health Algo Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar" aria-label="Health dashboard summary">
+      <div>
+        <p class="eyebrow">Health Algo</p>
+        <h1>Year-end body change cockpit</h1>
+      </div>
+      <div class="top-actions" aria-label="Dashboard controls">
+        <button class="icon-button" id="range7" type="button" title="Show 7 days">7d</button>
+        <button class="icon-button" id="rangeAll" type="button" title="Show all days">All</button>
+      </div>
+    </section>
+
+    <section class="status-band">
+      <div>
+        <p class="label">Today</p>
+        <strong id="todayStatus">Loading</strong>
+        <span id="todayDetail"></span>
+      </div>
+      <div>
+        <p class="label">7-day average</p>
+        <strong id="avgDeficit">Loading</strong>
+        <span id="avgDeficitDetail"></span>
+      </div>
+      <div>
+        <p class="label">Protein</p>
+        <strong id="proteinStatus">Loading</strong>
+        <span id="proteinDetail"></span>
+      </div>
+      <div>
+        <p class="label">Data quality</p>
+        <strong id="qualityStatus">Loading</strong>
+        <span id="qualityDetail"></span>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="main-column">
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Energy balance</p>
+              <h2>Calories in vs burn</h2>
+            </div>
+            <span id="energyWindow" class="pill"></span>
+          </div>
+          <div class="chart-wrap">
+            <svg id="energyChart" viewBox="0 0 920 300" role="img" aria-label="Energy balance chart"></svg>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Training and movement</p>
+              <h2>Exercise, steps, and active energy</h2>
+            </div>
+          </div>
+          <div class="metric-grid" id="movementGrid"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="label">Daily ledger</p>
+              <h2>Recent days</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>In</th>
+                  <th>Burn</th>
+                  <th>Deficit</th>
+                  <th>Protein</th>
+                  <th>Steps</th>
+                  <th>Sleep</th>
+                  <th>Flag</th>
+                </tr>
+              </thead>
+              <tbody id="dayRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <aside class="side-column">
+        <section class="panel coach">
+          <p class="label">Coach view</p>
+          <h2 id="coachHeadline">Loading</h2>
+          <ul id="coachList"></ul>
+        </section>
+
+        <section class="panel">
+          <p class="label">Recovery</p>
+          <h2>Sleep and heart signals</h2>
+          <div class="recovery-list" id="recoveryList"></div>
+        </section>
+
+        <section class="panel">
+          <p class="label">Pipeline</p>
+          <h2>Current inputs</h2>
+          <div class="source-list" id="sourceList"></div>
+          <p class="fineprint" id="generatedAt"></p>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <script type="module" src="dashboard-data.js"></script>
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>
